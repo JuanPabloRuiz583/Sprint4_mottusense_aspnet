@@ -127,7 +127,7 @@ Este projeto é um sistema de rastreamento de motos desenvolvido em C# com .NET 
    
 4. Inicie o servidor
 
-5. Acesse o swagger da API em: http://localhost:5043/swagger/index.html
+5. Acesse o swagger da API em: http://localhost:5001/index.html
 
 ## Integrantes
 
