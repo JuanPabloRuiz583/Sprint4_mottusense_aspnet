@@ -46,12 +46,19 @@ Este projeto é um sistema de rastreamento de motos desenvolvido em C# com .NET 
   Cadastra um novo cliente.  
   **Body:**
 
-- **PUT /api/clientes/{id}**  
-  Atualiza os dados de um cliente existente.  
+- **POST /api/Cliente/login**  
+  Realiza o login do cliente.  
   **Body:**  
 
 - **DELETE /api/clientes/{id}**  
   Remove um cliente do sistema.
+
+---
+
+### **Health**
+- **GET /api/Health**  
+  Verifica o status de saúde da aplicação.  
+  Retorna informações básicas indicando se a API está operacional.na documentacao do swagger tem o link da interface grafica.
 
 ---
 
@@ -73,6 +80,9 @@ Este projeto é um sistema de rastreamento de motos desenvolvido em C# com .NET 
 - **DELETE /api/motos/{id}**  
   Remove uma moto do sistema.
 
+- **POST /api/Moto/predict-status**  
+  Realiza a previsão do status de uma moto com base nos dados informados.  
+  **Body:**  
 ---
 
 ### **Pátios**
@@ -128,6 +138,32 @@ Este projeto é um sistema de rastreamento de motos desenvolvido em C# com .NET 
 4. Inicie o servidor
 
 5. Acesse o swagger da API em: http://localhost:5001/index.html
+   
+6. Todos os endpoints tirando o de clientes vao estar bloqueados, crie um cliente ou faça login se voce ja tiver um cliente.
+
+7. ao fazer o login e as credenciais estiverem certas, ira gerar um token, copie ele e cole no cadeado do swagger
+
+8.os outros endpoints estarao liberados apos realizar a etapa anterior. 
+
+
+
+## Descrição dos Testes Unitários
+
+Este projeto utiliza o framework xUnit para testes unitários da lógica principal.  
+Os testes estão localizados na pasta `Tests`. ao entrar nessa pasta clique em MotoServiceTest e execute os testes de la pelo gerenciador de testes. Os testes unitários do serviço de motos garantem o funcionamento correto das principais operações. Veja abaixo o que cada teste valida:
+
+- **Create_DeveRetornarMoto_QuandoDadosValidos**  
+  Verifica se uma moto é criada corretamente quando os dados fornecidos são válidos. Utiliza uma implementação fake do serviço para simular a criação e compara a placa informada.
+
+- **Create_DeveRetornarErro_QuandoNumeroChassiJaExiste**  
+  Garante que o serviço retorna um erro ao tentar criar uma moto com número de chassi já existente no banco de dados. O teste utiliza um banco em memória para simular o cenário e espera uma mensagem de erro específica.
+
+- **GetById_DeveRetornarNull_QuandoMotoNaoExiste**  
+  Testa se o serviço retorna `null` ao buscar uma moto por um ID inexistente, utilizando banco de dados em memória para garantir o isolamento do teste.
+
+Esses testes cobrem os principais cenários de criação e consulta de motos, assegurando que regras de negócio importantes sejam respeitadas.
+
+
 
 ## Integrantes
 
