@@ -25,7 +25,18 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-// Injeção de dependecias:
+// Configuração de CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
+// Injeção de dependências:
 builder.Services.AddScoped<IClienteService, ClienteService>();
 builder.Services.AddScoped<IMotoService, MotoService>();
 builder.Services.AddScoped<IPatioService, PatioService>();
@@ -122,6 +133,10 @@ app.UseSwaggerUI(configurationSwagger =>
 });
 
 app.UseHttpsRedirection();
+
+// Ativando CORS antes da autenticação/autorização
+app.UseCors("AllowAll");
+
 app.UseAuthentication(); // Adicionado para JWT funcionar
 app.UseAuthorization();
 app.MapControllers();
