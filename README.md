@@ -150,7 +150,7 @@ Este projeto é um sistema de rastreamento de motos desenvolvido em C# com .NET 
 ## Descrição dos Testes Unitários
 
 Este projeto utiliza o framework xUnit para testes unitários da lógica principal.  
-Os testes estão localizados na pasta `Tests`. ao entrar nessa pasta clique em MotoServiceTest e execute os testes de la pelo gerenciador de testes. Os testes unitários do serviço de motos garantem o funcionamento correto das principais operações. Veja abaixo o que cada teste valida:
+Os testes estão localizados na pasta `Tests`. ao entrar nessa pasta clique em MotoServiceTest e execute os testes de la pelo gerenciador de testes. Os testes unitários do serviço de motos garantem o funcionamento correto das principais operações. Veja abaixo o que cada teste valida(obs: realizamos muitos testes na aplicação onde todos funcionaram, porem esses 3 testes abaixo sao os principais testes para a nossa motoservice):
 
 - **Create_DeveRetornarMoto_QuandoDadosValidos**  
   Verifica se uma moto é criada corretamente quando os dados fornecidos são válidos. Utiliza uma implementação fake do serviço para simular a criação e compara a placa informada.
@@ -161,7 +161,7 @@ Os testes estão localizados na pasta `Tests`. ao entrar nessa pasta clique em M
 - **GetById_DeveRetornarNull_QuandoMotoNaoExiste**  
   Testa se o serviço retorna `null` ao buscar uma moto por um ID inexistente, utilizando banco de dados em memória para garantir o isolamento do teste.
 
-Esses testes cobrem os principais cenários de criação e consulta de motos, assegurando que regras de negócio importantes sejam respeitadas.
+Esses testes cobrem os principais cenários de criação e consulta de motos, assegurando que regras de negócio importantes sejam respeitadas.Alem desses testes de moto service, possuimos testes que testam as services das demais classes. 
 
 
 
